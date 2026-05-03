@@ -1,5 +1,5 @@
 name: 'PR Complexity Score'
-description: 'Scores pull requests on reviewability: cognitive complexity, blast radius, cross-cutting concerns. Suggests splitting oversized PRs.'
+description: 'Scores pull request complexity and reviewability. Suggests splitting oversized PRs.'
 branding:
   icon: 'git-pull-request'
   color: 'purple'
