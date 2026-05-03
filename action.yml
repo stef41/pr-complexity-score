@@ -1,0 +1,39 @@
+name: 'PR Complexity Score'
+description: 'Scores pull requests on reviewability: cognitive complexity, blast radius, cross-cutting concerns. Suggests splitting oversized PRs.'
+branding:
+  icon: 'git-pull-request'
+  color: 'purple'
+
+inputs:
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+    default: ${{ github.token }}
+  max-score:
+    description: 'Maximum acceptable complexity score (0-100)'
+    required: false
+    default: '70'
+  warn-score:
+    description: 'Score at which to issue a warning'
+    required: false
+    default: '40'
+  post-comment:
+    description: 'Post complexity report as PR comment'
+    required: false
+    default: 'true'
+  fail-on-high-complexity:
+    description: 'Fail the check if score exceeds max-score'
+    required: false
+    default: 'false'
+
+outputs:
+  complexity-score:
+    description: 'Overall complexity score (0-100)'
+  verdict:
+    description: 'low, medium, high, or extreme'
+  suggested-splits:
+    description: 'Number of suggested PR splits'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
